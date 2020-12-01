@@ -20,10 +20,6 @@ class SessionsController < ApplicationController
     flash[:success] = "Logged in as #{user.first_name}"
   end
 
-  def set_session(user)
-    session[:user_id] = user.id
-  end
-
   def redirect(user)
     redirect_to dashboard_path(id: user.id) if user.default?
     redirect_to admin_dashboard_path if user.admin?
